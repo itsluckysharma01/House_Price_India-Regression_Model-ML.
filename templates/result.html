@@ -17,9 +17,15 @@
         <div class="result-container">
             <div class="prediction-result">
                 <h2>Estimated House Price</h2>
+
                 <div class="price-display">
                     Rs.{{ "{:,.2f}".format(prediction) }}
                 </div>
+
+                <!-- <p>{{ prediction }}: This is the placeholder for the final price calculated by the Python code.
+                "{:,.2f}".format(...): This is just a bit of formatting to make the number look nice. It adds commas for thousands (like 12,34,567.00) and ensures it has two decimal places.
+                </p> -->
+
                 <p class="confidence-text">
                     This prediction is based on the machine learning model trained on similar properties
                 </p>
@@ -48,6 +54,18 @@
                 </div>
             </div>
 
+            <!-- <p>{% for ... %}: This creates a loop. It goes through every feature (like 'Bedrooms', 'Bathrooms', etc.) that was sent from the Python script.
+
+            For each feature, it displays the name (feature_name) and the value (feature_value).
+
+            The code inside the loop has some clever {% if ... %} logic to make the output more readable:
+
+            If the feature is 'Waterfront', it shows 'Yes' or 'No' instead of 1 or 0.
+
+            If the feature name contains 'Area' or 'Distance', it adds units like sq ft or miles.
+
+            If the feature is 'House Age', it adds the word years.</p> -->
+
             <div class="price-breakdown">
                 <h3>Price Analysis</h3>
                 <div class="price-info">
@@ -56,6 +74,7 @@
                         <p>Low Estimate: Rs.{{ "{:,.2f}".format(prediction * 0.9) }}</p>
                         <p>High Estimate: Rs.{{ "{:,.2f}".format(prediction * 1.1) }}</p>
                     </div>
+                    
                     <div class="price-per-sqft">
                         <p><strong>Price per sq ft:</strong></p>
                         <p>Rs.{{ "{:.2f}".format(prediction / features['Living Area (sq ft)']) }}</p>
