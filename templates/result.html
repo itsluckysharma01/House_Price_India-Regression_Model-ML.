@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 Prediction Result</h1>
+            <a href="/" class="back-btn">← Make Another Prediction</a>
+        </header>
+
+        <div class="result-container">
+            <div class="prediction-result">
+                <h2>Estimated House Price</h2>
+                <div class="price-display">
+                    ${{ "{:,.2f}".format(prediction) }}
+                </div>
+                <p class="confidence-text">
+                    This prediction is based on the machine learning model trained on similar properties
+                </p>
+            </div>
+
+            <div class="features-summary">
+                <h3>Property Details Used for Prediction</h3>
+                <div class="features-grid">
+                    {% for feature_name, feature_value in features.items() %}
+                    <div class="feature-item">
+                        <span class="feature-label">{{ feature_name }}:</span>
+                        <span class="feature-value">
+                            {% if feature_name == 'Waterfront' %}
+                                {{ 'Yes' if feature_value == 1 else 'No' }}
+                            {% elif 'Area' in feature_name or 'Distance' in feature_name %}
+                                {{ "{:,.0f}".format(feature_value) }}
+                                {% if 'sq ft' in feature_name %}sq ft{% elif 'miles' in feature_name %}miles{% endif %}
+                            {% elif feature_name == 'House Age' %}
+                                {{ "{:.0f}".format(feature_value) }} years
+                            {% else %}
+                                {{ feature_value }}
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="price-breakdown">
+                <h3>Price Analysis</h3>
+                <div class="price-info">
+                    <div class="price-range">
+                        <p><strong>Price Range:</strong></p>
+                        <p>Low Estimate: Rs.{{ "{:,.2f}".format(prediction * 0.9) }}</p>
+                        <p>High Estimate: Rs.{{ "{:,.2f}".format(prediction * 1.1) }}</p>
+                    </div>
+                    <div class="price-per-sqft">
+                        <p><strong>Price per sq ft:</strong></p>
+                        <p>Rs.{{ "{:.2f}".format(prediction / features['Living Area (sq ft)']) }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <h4>⚠️ Disclaimer</h4>
+                <p>This is an estimated price based on machine learning algorithms. Actual market prices may vary due to market conditions, exact location, and other factors not captured in this model. Please consult with a real estate professional for accurate pricing.</p>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">Predict Another House</a>
+        </div>
+    </div>
+</body>
+</html>

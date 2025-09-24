@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 House Price Prediction</h1>
+            <h4>Lucky Sharma</h4>
+            <p>Get an accurate estimate of your house price using machine learning</p>
+        </header>
+
+        <form id="predictionForm" action="/predict" method="POST">
+            <div class="form-grid">
+                <!-- Basic Information -->
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="bedrooms">Number of Bedrooms:</label>
+                        <input type="number" id="bedrooms" name="bedrooms" min="1" max="10" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bathrooms">Number of Bathrooms:</label>
+                        <input type="number" id="bathrooms" name="bathrooms" min="1" max="10"  required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="floors">Number of Floors:</label>
+                        <input type="number" id="floors" name="floors" min="1" max="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="total_rooms">Total Rooms:</label>
+                        <input type="number" id="total_rooms" name="total_rooms" min="2" max="20"  required>
+                    </div>
+                </div>
+
+                <!-- Area Information -->
+                <div class="form-section">
+                    <h3>Area Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="living_area">Living Area (sq ft):</label>
+                        <input type="number" id="living_area" name="living_area" min="500" max="10000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lot_area">Lot Area (sq ft):</label>
+                        <input type="number" id="lot_area" name="lot_area" min="1000" max="100000"  required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="house_area">House Area excluding basement (sq ft):</label>
+                        <input type="number" id="house_area" name="house_area" min="500" max="8000" required>
+                    </div>
+                </div>
+
+                <!-- Property Features -->
+                <div class="form-section">
+                    <h3>Property Features</h3>
+                    
+                    <div class="form-group">
+                        <label for="waterfront">Waterfront Present:</label>
+                        <select id="waterfront" name="waterfront" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="views">Number of Views:</label>
+                        <input type="number" id="views" name="views" min="0" max="4" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">Condition of House (1-5):</label>
+                        <select id="condition" name="condition" required>
+                            <option value="1">Poor</option>
+                            <option value="2">Fair</option>
+                            <option value="3" selected>Average</option>
+                            <option value="4">Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade">Grade of House (1-13):</label>
+                        <input type="number" id="grade" name="grade" min="1" max="13" step="1" required>
+                    </div>
+                </div>
+
+                <!-- Location & Other -->
+                <div class="form-section">
+                    <h3>Location & Other Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="schools_nearby">Number of Schools Nearby:</label>
+                        <input type="number" id="schools_nearby" name="schools_nearby" min="0" max="10" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="airport_distance">Distance from Airport (miles):</label>
+                        <input type="number" id="airport_distance" name="airport_distance" min="1" max="200" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="house_age">House Age (years):</label>
+                        <input type="number" id="house_age" name="house_age" min="0" max="150" step="1" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="predict-btn">
+                <span>🔮 Predict House Price</span>
+            </button>
+        </form>
+
+        <div class="info-section">
+            <h3>How it works</h3>
+            <p>Our machine learning model analyzes various factors including location, size, condition, and amenities to provide an accurate house price prediction. The model has been trained on thousands of real estate transactions to ensure reliability.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

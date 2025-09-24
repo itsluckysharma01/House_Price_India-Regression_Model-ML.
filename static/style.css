@@ -1,0 +1,355 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.back-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Form styles */
+#predictionForm {
+    padding: 40px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.form-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.form-section h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Predict button */
+.predict-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.predict-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.predict-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Info section */
+.info-section {
+    background: #f8f9fa;
+    padding: 30px 40px;
+    border-top: 1px solid #e1e5e9;
+}
+
+.info-section h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.info-section p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Result page styles */
+.result-container {
+    padding: 40px;
+}
+
+.prediction-result {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.prediction-result h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.price-display {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.confidence-text {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.features-summary {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.features-summary h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.feature-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid #667eea;
+}
+
+.feature-label {
+    font-weight: 500;
+    color: #555;
+}
+
+.feature-value {
+    font-weight: 600;
+    color: #333;
+}
+
+.price-breakdown {
+    background: white;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.price-breakdown h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.price-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.price-range p,
+.price-per-sqft p {
+    margin-bottom: 8px;
+}
+
+.disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.disclaimer h4 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.disclaimer p {
+    color: #856404;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.action-buttons {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    #predictionForm {
+        padding: 20px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .price-display {
+        font-size: 2.5rem;
+    }
+    
+    .result-container {
+        padding: 20px;
+    }
+    
+    .back-btn {
+        position: static;
+        transform: none;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .price-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
